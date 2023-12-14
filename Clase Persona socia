@@ -1,9 +1,94 @@
-public class Persona {
-    
+package Biblioteca;
+
+/**
+ *
+ * @author aampa
+ */
+public class Socios {
+
     private String DNI;
     private String nombre;
     private String contacto;
+    private int fecha_entrega; //socios 30 dias no socios 15 dias
+    private String socio;
+
+    public Socios() {
+
+        DNI = "";
+        nombre = "";
+        contacto = "";
+        fecha_entrega = 0;
+        socio = "";
+
+    }
+
+    public Socios(String DNI, String nombre, String contacto, int fecha_entrega, String socio) {
+        this.DNI = DNI;
+        this.nombre = nombre;
+        this.contacto = contacto;
+        this.fecha_entrega = fecha_entrega;
+        this.socio = socio;
+    }
+
+    //GETTER
+    public String getDNI() {
+        return DNI;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public int getFecha_entrega() {
+        return fecha_entrega;
+    }
+
+    public String isSocio() {
+        return socio;
+    }
+
+    //SETTER
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public void setFecha_entrega(int fecha_entrega) {
+        this.fecha_entrega = fecha_entrega;
+    }
+
+    public void setSocio(String socio) {
+        this.socio = socio;
+    }
+
+    //GETTER
+    public String datossocio() {
+        return "\nNombre: " + nombre + "\nNumero de telefono: " + contacto;
+
+    }
     
-   
-    
+    //SETTER
+    public void damenombre(String nombre_socio) {
+        nombre = nombre_socio;
+    }
+    public void damecontacto(String contacto_socio) {
+        contacto = contacto_socio;
+    }
+    public void dameDNI(String DNI_socio) {
+        DNI = DNI_socio;
+    }
+    public void damesocio(String socio_socio) {
+        socio = socio_socio;
+    }
 }
