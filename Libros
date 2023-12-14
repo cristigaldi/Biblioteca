@@ -1,0 +1,10 @@
+public class Libros {
+    
+    private int ISBN;
+    private String titulo;
+    private String tematica;
+    private String autor;
+    private String prestado;
+    private int fecha; 
+    
+}
