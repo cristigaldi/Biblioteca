@@ -1,0 +1,14 @@
+public class Biblioteca {
+    
+    private String seccion1;
+    private String seccion2;
+    private String seccion3;
+    private String seccion4;
+    
+    public Biblioteca(){
+        seccion1 = "Seccion 1";
+        seccion2 = "Seccion 2";
+        seccion3 = "Seccion 3";
+        seccion4 = "Seccion 4";
+    }
+}
