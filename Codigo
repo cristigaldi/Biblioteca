@@ -1,0 +1,49 @@
+public class Trabajo {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        /*
+        To change this license header, choose License Headers in Project Properties.
+        To change this template file, choose Tools | Templates and open the template in the editor.
+        @author Antonio "el crack"
+        @param args the command line arguments
+         */
+
+        //Me han pedido que haga un programa que coge 10 numeros sin decimales por teclado, despues los muestra de menor a mayor por pntalla
+        // y que diga cuantos pares hay que son los que se dividen por 2 y da 0, también tengo que poner cuantos impares que es lo de antes pero
+        //al veres
+        //declaracion de bariables
+        int pares = 0;
+        int impares = 0;
+        int[] numeros = new int[10];
+
+        Scanner sn1 = new Scanner(System.in);
+
+        
+        for (int i = 0; i < 10; i++) {
+
+            System.out.println("Dame un numero" + (i + 1) + " : ");
+            numeros[i] = sn1.nextInt();
+            
+        }
+        // los numeros no puedo ordenarlos todavia
+        for (int i = 0; i < 10; i++) {
+            if (numeros[i] % 2 == 0) {
+                pares++;
+
+            } else {
+
+                impares++;
+
+            }
+
+            System.out.println("Total pares: " + pares);
+            System.out.println("Total impares: " + impares);
+
+        }
+    }
+
+}
