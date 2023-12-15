@@ -1,31 +1,28 @@
 public class Libros {
-    
-    public class Libros {
-    
+
     private int ISBN;
     private String titulo;
     private String tematica;
     private String autor;
-    private String prestado;
- 
+    private boolean prestado;
 
     public Libros() {
-    
-    ISBN=0;
-    titulo="";
-    tematica="";
-    autor="";
-    prestado="";
-    
+
+        ISBN = 0;
+        titulo = "";
+        tematica = "";
+        autor = "";
+        prestado = false;
+
     }
 
-    public Libros(int ISBN, String titulo, String tematica, String autor, String prestado, int fecha) {
+    public Libros(int ISBN, String titulo, String tematica, String autor, boolean prestado, int fecha) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.tematica = tematica;
         this.autor = autor;
         this.prestado = prestado;
-        
+
     }
 
     public int getISBN() {
@@ -44,15 +41,11 @@ public class Libros {
         return autor;
     }
 
-    public String getPrestado() {
+    public boolean getPrestado() {
         return prestado;
     }
 
-   
-    
-    
-    //Setter
-    
+    /*//Setter
     public void setISBN(int ISBN) {
         this.ISBN = ISBN;
     }
@@ -69,16 +62,53 @@ public class Libros {
         this.autor = autor;
     }
 
-    public void setPrestado(String prestado) {
+    public void setPrestado(boolean prestado) {
         this.prestado = prestado;
     }
-
+    */
+    
+    //SETTER PARA PEDIR QUE LIBRO SE LLEVA
+    
+     public void setNombrelibro(String titulo_libro) {
+        this.titulo = titulo_libro;
+    }
+    
+    public void setAutor(String autor_libro){
+        this.autor = autor_libro;
+    }
+    
+    public void setTematica(String tematica_libro){
+        this.tematica= tematica_libro;
+    }
+    
+    public void setISBNlibro(int ISBN_libro) {
+        this.ISBN = ISBN_libro;
+    }
+    
+    //SETTER INDICAR si el libro esta disponible
+    public void disponiblidad_libro(String prestado_libro){
+        
+        if(titulo.equalsIgnoreCase(prestado_libro)){
+            this.prestado = true;
+        }else{
+            this.prestado =false;
+        }
+    }
+    
+    //GETTER 
+    public String disponibilidad(){
+        if(prestado==true){
+            return "Puedes llevarte el libro";
+            
+        }else{
+            return "El libro no esta disponible"; 
+        }
+    }
+    }
     
 
-    @Override
-    public String toString() {
-        return "Libros{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", tematica=" + tematica + ", autor=" + autor + ", prestado=" + prestado + '}';
-    }
+ 
+
     
     
     
