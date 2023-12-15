@@ -95,12 +95,13 @@ public class Socios {
     }
     
     //SETTER PARA VER SI ES SOCIO
+    
     public void setSocio (String socio_indicar){
         
-        if(socio_indicar=="si"){
-            this.socio_indicar=true;
+        if("si".equalsIgnoreCase(socio_indicar)){
+            this.socio=true;
         }else{
-            this.socio_indicar=false;
+            this.socio=false;
         }
     }
     
