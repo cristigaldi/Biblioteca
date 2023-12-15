@@ -10,7 +10,7 @@ public class Socios {
     private String nombre;
     private String contacto;
     private int fecha_entrega; //socios 30 dias no socios 15 dias
-    private String socio;
+    private boolean socio;
 
     public Socios() {
 
@@ -18,15 +18,37 @@ public class Socios {
         nombre = "";
         contacto = "";
         fecha_entrega = 0;
-        socio = "";
+        socio = false;
 
     }
 
-    public Socios(String DNI, String nombre, String contacto, int fecha_entrega, String socio) {
+    public Socios(String DNI, String nombre, String contacto, int fecha_entrega, boolean socio) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.contacto = contacto;
         this.fecha_entrega = fecha_entrega;
+        this.socio = socio;
+    }
+    
+    //SETTER
+    
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public void setFecha_entrega(int fecha_entrega) {
+        this.fecha_entrega = fecha_entrega;
+    }
+
+    public void setSocio(boolean socio) {
         this.socio = socio;
     }
 
@@ -47,31 +69,11 @@ public class Socios {
         return fecha_entrega;
     }
 
-    public String isSocio() {
+    public boolean isSocio() {
         return socio;
     }
 
-    //SETTER
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
-    }
-
-    public void setFecha_entrega(int fecha_entrega) {
-        this.fecha_entrega = fecha_entrega;
-    }
-
-    public void setSocio(String socio) {
-        this.socio = socio;
-    }
-
+    
     //GETTER
     public String datossocio() {
         return "\nNombre: " + nombre + "\nNumero de telefono: " + contacto;
@@ -80,15 +82,39 @@ public class Socios {
     
     //SETTER
     public void damenombre(String nombre_socio) {
-        nombre = nombre_socio;
+        this.nombre = nombre_socio;
     }
     public void damecontacto(String contacto_socio) {
-        contacto = contacto_socio;
+        this.contacto = contacto_socio;
     }
     public void dameDNI(String DNI_socio) {
-        DNI = DNI_socio;
+        this.DNI = DNI_socio;
     }
-    public void damesocio(String socio_socio) {
-        socio = socio_socio;
+    public void damesocio(boolean socio_socio) {
+        this.socio = socio_socio;
     }
-}
+    
+    //SETTER PARA VER SI ES SOCIO
+    public void setSocio (String socio_indicar){
+        
+        if(socio_indicar=="si"){
+            this.socio_indicar=true;
+        }else{
+            this.socio_indicar=false;
+        }
+    }
+    
+    //GETTER PARA QUE SALGA MENSAJE PARA SOCIO O NO SOCIO
+    public String getSocio (){
+        if(socio==true){
+            return "Puedes devolver el libro en 30 dias";
+        }else{
+            return "Tienes 15 dias para devolver el libro";
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return "Socios{" + "DNI=" + DNI + ", nombre=" + nombre + ", contacto=" + contacto + ", fecha_entrega=" + fecha_entrega + ", socio=" + socio + '}';
+    }
+    
