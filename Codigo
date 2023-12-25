@@ -43,6 +43,26 @@ public class Trabajo {
             System.out.println("Total pares: " + pares);
             System.out.println("Total impares: " + impares);
 
+
+        Scanner sn_teclado = new Scanner(System.in);
+
+        Socios personas = new Socios();
+
+        //Pedir datos por consola 
+        System.out.println("Dame tu nombre:  ");
+
+        personas.damenombre(sn_teclado.nextLine());
+
+        System.out.println("Dame tu telefono: ");
+
+        personas.damecontacto(sn_teclado.nextLine());
+
+        System.out.println("Dame tu DNI:  ");
+        personas.damecontacto(sn_teclado.nextLine());
+
+        System.out.println("Indica si eres socio Si/NO "); 
+        personas.setSocio(sn_teclado.nextLine());
+        System.out.println(personas.getSocio());
         }
     }
 
