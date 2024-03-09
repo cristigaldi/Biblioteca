@@ -1,3 +1,8 @@
+package Clases;
+
+
+import java.time.LocalDate;
+
 public class Libros {
 
     private int ISBN;
@@ -5,6 +10,8 @@ public class Libros {
     private String tematica;
     private String autor;
     private boolean prestado;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaDevolucion;
 
     public Libros() {
 
@@ -13,7 +20,8 @@ public class Libros {
         tematica = "";
         autor = "";
         prestado = false;
-
+        fechaPrestamo = null;
+        fechaDevolucion = null;
     }
 
     public Libros(int ISBN, String titulo, String tematica, String autor, boolean prestado, int fecha) {
@@ -24,6 +32,7 @@ public class Libros {
         this.prestado = prestado;
 
     }
+
 
     public int getISBN() {
         return ISBN;
@@ -65,52 +74,71 @@ public class Libros {
     public void setPrestado(boolean prestado) {
         this.prestado = prestado;
     }
-    */
+     */
     
-    //SETTER PARA PEDIR QUE LIBRO SE LLEVA
-    
-     public void setNombrelibro(String titulo_libro) {
+    //SETTER CON CONDICION PARA PEDIR QUE LIBRO SE LLEVA
+    public void setNombrelibro(String titulo_libro) {
         this.titulo = titulo_libro;
     }
-    
-    public void setAutor(String autor_libro){
+
+    public void setAutor(String autor_libro) {
         this.autor = autor_libro;
     }
-    
-    public void setTematica(String tematica_libro){
-        this.tematica= tematica_libro;
+
+    public void setTematica(String tematica_libro) {
+        this.tematica = tematica_libro;
     }
-    
+
     public void setISBNlibro(int ISBN_libro) {
         this.ISBN = ISBN_libro;
     }
-    
+
     //SETTER INDICAR si el libro esta disponible
-    public void disponiblidad_libro(String prestado_libro){
-        
-        if(titulo.equalsIgnoreCase(prestado_libro)){
+    public void disponiblidad_libro(String prestado_libro) {
+
+        //quiero meter un random, para que cuando pida el libro diga aleatoriamente si esta o no
+        if (titulo.equalsIgnoreCase(prestado_libro)) {
             this.prestado = true;
-        }else{
-            this.prestado =false;
+        } else {
+            this.prestado = false;
         }
     }
-    
+
+    // Método para prestar un libro
+
+    /**
+     *
+     * @param esSocio
+     * @return 
+     */
+    public void prestarLibro(boolean esSocio) {
+        prestado = true; // Establece que el libro está prestado
+        fechaPrestamo = LocalDate.now(); // Obtiene la fecha actual como fecha de préstamo
+//         Calcula la fecha de devolución según si el usuario es socio o no
+        if (esSocio) {
+            fechaDevolucion = fechaPrestamo.plusDays(30); // Si es socio, 30 días para devolver
+            System.out.println("Debes devolverlo antes del: " + fechaDevolucion);
+        } else {
+            fechaDevolucion = fechaPrestamo.plusDays(15); // Si no es socio, 15 días para devolver
+            System.out.println("Debes devolverlo antes del: " + fechaDevolucion);
+        }
+    }
+
     //GETTER 
-    public String disponibilidad(){
-        if(prestado==true){
+    public String disponibilidad() {
+        if (prestado == true) {
             return "Puedes llevarte el libro";
-            
-        }else{
-            return "El libro no esta disponible"; 
+
+        } else {
+            return "El libro no esta disponible";
         }
     }
-    }
-    
 
- 
+//    // Método para devolver un libro
+//    public void devolverLibro() {
+//        prestado = false; // Establece que el libro ya no está prestado
+//        fechaPrestamo = null; // Reinicia la fecha de préstamo
+//        fechaDevolucion = null; // Reinicia la fecha de devolución
+//    }
 
-    
-    
-    
 }
-
