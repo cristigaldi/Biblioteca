@@ -1,14 +1,65 @@
+package Clases;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Biblioteca {
-    
-    private String seccion1;
-    private String seccion2;
-    private String seccion3;
-    private String seccion4;
-    
-    public Biblioteca(){
-        seccion1 = "Seccion 1";
-        seccion2 = "Seccion 2";
-        seccion3 = "Seccion 3";
-        seccion4 = "Seccion 4";
+    // Declaramos un mapa para almacenar las secciones de la biblioteca, donde la clave es el nombre de la sección
+    // y el valor es un arreglo de libros correspondientes a esa sección
+
+    private HashMap<String, ArrayList<String>> secciones = new HashMap<>();
+
+    public Biblioteca() {
+        secciones = new HashMap<>();
+
+        secciones.put("comedia", new ArrayList<>());
+        secciones.get("comedia").add("El Gran Gatsby");
+        secciones.get("comedia").add("Don Quijote de la Mancha");
+        secciones.get("comedia").add("Orgullo y Prejuicio");
+        secciones.get("comedia").add("Mi familia y otros animales");
+        secciones.get("comedia").add("La conjura de los necios");
+
+        secciones.put("terror", new ArrayList<>());
+        secciones.get("terror").add("Dracula");
+        secciones.get("terror").add("Frankenstein");
+        secciones.get("terror").add("It");
+        secciones.get("terror").add("El resplandor");
+        secciones.get("terror").add("El exorcista");
+
+        secciones.put("informatica", new ArrayList<>());
+        secciones.get("informatica").add("Clean Code");
+        secciones.get("informatica").add("Design Patterns");
+        secciones.get("informatica").add("Introducción a la programación con Python");
+        secciones.get("informatica").add("The Pragmatic Programmer");
+        secciones.get("informatica").add("MStructure and Interpretation of Computer Programs");
+
+        secciones.put("ciencia", new ArrayList<>());
+        secciones.get("ciencia").add("Cosmos");
+        secciones.get("ciencia").add("Breve historia del tiempo");
+        secciones.get("ciencia").add("Sapiens: De animales a dioses");
+        secciones.get("ciencia").add("El gen egoísta");
+        secciones.get("ciencia").add("El origen de las especies");
+
     }
+    
+     // Verificar si hay libros disponibles en la sección
+    public void mostrarLibrosPorSeccion(String genero) {
+        ArrayList<String> librosDisponibles = getLibrosSeccion(genero);
+
+        if (librosDisponibles != null && !librosDisponibles.isEmpty()) {
+            // Si hay libros disponibles, mostrarlos en consola
+            System.out.println("Libros disponibles en la seccion de " + genero + ":");
+            for (String libro : librosDisponibles) {
+                System.out.println(libro);
+            }
+        } else {
+            System.out.println("Lo siento, no hay libros disponibles en la seccion de " + genero);
+        }
+    }
+
+    public ArrayList<String> getLibrosSeccion(String seccion) {
+        return secciones.get(seccion);
+
+    }
+
 }
