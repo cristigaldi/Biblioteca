@@ -1,69 +1,108 @@
-public class Trabajo {
+
+package entornostrabajo;
+
+import Clases.Biblioteca;
+import Clases.Libros;
+import Clases.Socios;
+import java.util.Scanner;
+
+
+public class CodigoAntonio {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        /*
-        To change this license header, choose License Headers in Project Properties.
-        To change this template file, choose Tools | Templates and open the template in the editor.
-        @author Antonio "el crack"
-        @param args the command line arguments
-         */
 
-        //Me han pedido que haga un programa que coge 10 numeros sin decimales por teclado, despues los muestra de menor a mayor por pntalla
-        // y que diga cuantos pares hay que son los que se dividen por 2 y da 0, también tengo que poner cuantos impares que es lo de antes pero
-        //al veres
-        //declaracion de bariables
         int pares = 0;
         int impares = 0;
         int[] numeros = new int[10];
 
         Scanner sn1 = new Scanner(System.in);
-
-        
-        for (int i = 0; i < 10; i++) {
-
-            System.out.println("Dame un numero" + (i + 1) + " : ");
-            numeros[i] = sn1.nextInt();
-            
-        }
-        // los numeros no puedo ordenarlos todavia
-        for (int i = 0; i < 10; i++) {
-            if (numeros[i] % 2 == 0) {
-                pares++;
-
-            } else {
-
-                impares++;
-
-            }
-
-            System.out.println("Total pares: " + pares);
-            System.out.println("Total impares: " + impares);
-
-
         Scanner sn_teclado = new Scanner(System.in);
 
+        //rellenar el array 
+        for (int i = 0; i < 10; i++) {
+
+            System.out.println("Dame un numero" + (i + 1) + " : "); //contar para que empiece desde 1 en consola
+            numeros[i] = sn1.nextInt();
+
+        }
+
+        // Metodo de seleccion para ordenar los números de mayor a menor
+        //bucle anidado 
+        for (int i = 0; i < numeros.length - 1; i++) { // recorre todo el array 
+            int numeroMayor = i;
+
+            for (int j = i + 1; j < numeros.length; j++) { //bucle para ordenar los numeros
+                if (numeros[j] > numeros[numeroMayor]) {
+                    numeroMayor = j; //cada vez que el bucle encuentre un numero mayor de J lo sustituira. 
+                }
+            }
+
+            // Intercambio de posiciones de elementos al final de la iteración, para poder ordenar los numeros de mayor a menor
+            int temp = numeros[numeroMayor];
+            numeros[numeroMayor] = numeros[i];
+            numeros[i] = temp;
+
+        }
+
+        // oderanacion de numeros de mayor a menor
+        System.out.println("Numeros ordenados de mayor a menor:");
+        for (int num : numeros) {
+            System.out.print(num + " , ");
+        }
+
+        //salto de linea
+        System.out.println();
+
+        //Bucle for each para indicar cuantos pares he impares hay
+        for (int num : numeros) {
+            if (num % 2 == 0) {
+                pares++;
+            } else {
+                impares++;
+            }
+        }
+        //Total de pares e impares
+        System.out.println("Total pares: " + pares);
+        System.out.println("Total impares: " + impares);
+
+        //Pedir la informacion para quien quiera coger libros de la biblioteca
+        
         Socios personas = new Socios();
 
         //Pedir datos por consola 
         System.out.println("Dame tu nombre:  ");
-
         personas.damenombre(sn_teclado.nextLine());
 
         System.out.println("Dame tu telefono: ");
-
         personas.damecontacto(sn_teclado.nextLine());
 
         System.out.println("Dame tu DNI:  ");
         personas.damecontacto(sn_teclado.nextLine());
 
-        System.out.println("Indica si eres socio Si/NO "); 
+        System.out.println("Indica si eres socio Si/NO ");
         personas.setSocio(sn_teclado.nextLine());
-        System.out.println(personas.getSocio());
-        }
+        
+        //Pedir la tematica y el libro 
+        Libros estanteria = new Libros();
+        Biblioteca secciones = new Biblioteca();
+        
+        //Pedir la tematica
+        System.out.println("Que genero buscas?  (comedia, terror, informatica, ciencia) ");
+        String genero = sn_teclado.nextLine().toLowerCase(); 
+        secciones.mostrarLibrosPorSeccion(genero);
+        //pedir el libro
+        System.out.println("Que libro quieres coger? ");
+        estanteria.setNombrelibro(sn_teclado.nextLine());
+        
+        //fecha en la que tiene que devolver el libro
+        estanteria.prestarLibro(true);
+        System.out.println("Gracias, que tengas un buen dia");
+       
+
     }
 
 }
