@@ -1,11 +1,10 @@
-
 package entornostrabajo;
 
 import Clases.Biblioteca;
 import Clases.Libros;
 import Clases.Socios;
+import java.time.LocalDate;
 import java.util.Scanner;
-
 
 public class CodigoAntonio {
 
@@ -70,7 +69,6 @@ public class CodigoAntonio {
         System.out.println("Total impares: " + impares);
 
         //Pedir la informacion para quien quiera coger libros de la biblioteca
-        
         Socios personas = new Socios();
 
         //Pedir datos por consola 
@@ -85,24 +83,28 @@ public class CodigoAntonio {
 
         System.out.println("Indica si eres socio Si/NO ");
         personas.setSocio(sn_teclado.nextLine());
-        
+
         //Pedir la tematica y el libro 
         Libros estanteria = new Libros();
         Biblioteca secciones = new Biblioteca();
-        
+
         //Pedir la tematica
         System.out.println("Que genero buscas?  (comedia, terror, informatica, ciencia) ");
         String genero = sn_teclado.nextLine().toLowerCase(); 
+              
+        //quiero que el programa pare aqui si no tenemos el genero que busca
         secciones.mostrarLibrosPorSeccion(genero);
-        //pedir el libro
-        System.out.println("Que libro quieres coger? ");
-        estanteria.setNombrelibro(sn_teclado.nextLine());
         
+        //pedir el libro
+        System.out.println("Que libro quieres coger? "); 
+        estanteria.setNombrelibro(sn_teclado.nextLine());
+
         //fecha en la que tiene que devolver el libro
-        estanteria.prestarLibro(true);
-        System.out.println("Gracias, que tengas un buen dia");
-       
+        LocalDate fechaPrestamo = LocalDate.now();
+        estanteria.prestarLibro(false);
+        System.out.println("Disfruta el libro, que tengas un buen dia");
 
     }
 
 }
+
