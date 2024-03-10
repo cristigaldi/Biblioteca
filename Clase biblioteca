@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Biblioteca {
-    // Declaramos un mapa para almacenar las secciones de la biblioteca, donde la clave es el nombre de la sección
-    // y el valor es un arreglo de libros correspondientes a esa sección
+    // Mapa para almacenar las secciones de la biblioteca, donde la clave es el nombre de la sección
+    // y el valor son los libros correspondientes a esa sección
 
     private HashMap<String, ArrayList<String>> secciones = new HashMap<>();
 
@@ -41,9 +41,11 @@ public class Biblioteca {
         secciones.get("ciencia").add("El origen de las especies");
 
     }
+
+// Verificar si hay libros disponibles en la sección
     
-     // Verificar si hay libros disponibles en la sección
     public void mostrarLibrosPorSeccion(String genero) {
+               
         ArrayList<String> librosDisponibles = getLibrosSeccion(genero);
 
         if (librosDisponibles != null && !librosDisponibles.isEmpty()) {
