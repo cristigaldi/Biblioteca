@@ -19,7 +19,7 @@ public class Libros {
         titulo = "";
         tematica = "";
         autor = "";
-        prestado = false;
+        prestado = true;
         fechaPrestamo = null;
         fechaDevolucion = null;
     }
@@ -96,7 +96,6 @@ public class Libros {
     //SETTER INDICAR si el libro esta disponible
     public void disponiblidad_libro(String prestado_libro) {
 
-        //quiero meter un random, para que cuando pida el libro diga aleatoriamente si esta o no
         if (titulo.equalsIgnoreCase(prestado_libro)) {
             this.prestado = true;
         } else {
@@ -112,8 +111,9 @@ public class Libros {
      * @return 
      */
     public void prestarLibro(boolean esSocio) {
-        prestado = true; // Establece que el libro está prestado
+        prestado = false; // Establece que el libro está prestado
         fechaPrestamo = LocalDate.now(); // Obtiene la fecha actual como fecha de préstamo
+        
 //         Calcula la fecha de devolución según si el usuario es socio o no
         if (esSocio) {
             fechaDevolucion = fechaPrestamo.plusDays(30); // Si es socio, 30 días para devolver
