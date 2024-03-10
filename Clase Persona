@@ -3,10 +3,6 @@ package Clases;
 
 //import java.util.logging.Logger;
 
-/**
- *
- * @author aampa
- */
 public class Socios {
 
     private String DNI;
