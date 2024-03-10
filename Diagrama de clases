@@ -1,0 +1,68 @@
+@startuml
+class Personas {
+  - nombre: String
+  - dni: String
+  - contacto: String
+  - fecha_entrega: LocalDate
+  - socio: boolean
+
+  + Personas ( entradaDni: string, entradaNombre: String, entradaContacto: String, entradaFecha_entrega: LocalDate, entradaSocio)
+  + getDni(): String
+  + getNombre(): String
+  + getContacto(): String
+  + getFecha_entrega(): LocalDate
+  + isSocio(): boolean
+  + setDni(entradaDni: String): void
+  + setNombre(entradaNombre: String): void
+  + setContacto(entradaContacto: String): void
+  + setFecha_entrega(entradaFecha_entrega: LocalDate):void
+  + setSocio(entradaSocio: boolean): void
+}
+
+class Libros {
+  - ISBN: int
+  - titulo: String
+  - tematica: String
+  - autor: String
+  - prestado: boolean
+
+
+  + Libros(entradaISBN: int, entradaTitulo: String, entradaTematica: String, entradaAutor: String, entradaPrestado:boolean)
+  + getISBN(): int
+  + getTitulo(): String
+  + getTematica(): String
+  + getAutor: String
+  + setISBN(entradaISBN: int): void
+  + setTitulo(entradaTitulo: String): void
+  + setTematica(entradaTematica: String): void
+  + setAutor(entradaAutor: String): void
+  + setPrestado(entradaPrestado: boolean): void
+}
+
+class Prestado {
+  - fecha_prestamo: LocalDate
+  - fecha_devolucion: LocalDate
+  - libro_prestado: Libros
+
+  + Prestamo(entradaFecha_prestamo: LocalDate, entradaFecha_devolucion: int, entradaLibro_prestado: int)
+  + getFecha_prestamo(): int
+  + getFecha_devolucion(): int
+  + getLibro_prestado(): int
+  + setFecha_prestamo(entradaFecha_prestamo: LocalDate): void
+  + setFecha_devolucion(entradaFecha_devolucion: LocalDate): void
+  + setLibro_prestado(entradaLibro_prestado: Libros): void
+}
+class Biblioteca {
+  - secciones: HashMap<String, ArrayList<String>>
+  + Biblioteca()
+  - inicializarSecciones(): void
+  + mostrarLibrosPorSeccion(genero: String): void
+  + getLibrosSeccion(seccion: String): ArrayList<String>
+}
+
+Personas "1" -- "0..*" Libros
+Personas "1" -- "0..*" Prestado
+Personas "1" -- "0..1" Biblioteca
+Libros "0..*" -- "1" Biblioteca
+
+@enduml
