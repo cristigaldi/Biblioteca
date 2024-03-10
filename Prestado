@@ -1,0 +1,56 @@
+
+package Clases;
+
+
+import java.util.logging.Logger;
+
+public class Prestamo {
+    
+    private int fecha_prestamo; //Fecha en la que se preta el libro
+    private int fecha_devolucion;//Fecha limite para devolver el libro
+    private int libro_prestado; //Referencia al libro prestado
+
+    public Prestamo() {
+        
+        fecha_prestamo=0;
+        fecha_devolucion=0;
+        libro_prestado=0;
+    }
+
+    public void setFecha_prestamo(int fecha_prestamo) {
+        this.fecha_prestamo = fecha_prestamo;
+    }
+
+    public void setFecha_devolucion(int fecha_devolucion) {
+        this.fecha_devolucion = fecha_devolucion;
+    }
+
+    public void setLibro_prestado(int libro_prestado) {
+        this.libro_prestado = libro_prestado;
+    }
+    private static final Logger LOG = Logger.getLogger(Prestamo.class.getName());
+
+    public int getFecha_prestamo() {
+        return fecha_prestamo;
+    }
+
+    public int getFecha_devolucion() {
+        return fecha_devolucion;
+    }
+
+    public int getLibro_prestado() {
+        return libro_prestado;
+    }
+
+    public static Logger getLOG() {
+        return LOG;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestamo{" + "fecha_prestamo=" + fecha_prestamo + ", fecha_devolucion=" + fecha_devolucion + ", libro_prestado=" + libro_prestado + '}';
+    }
+    
+    
+    
+}
