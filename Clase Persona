@@ -1,54 +1,22 @@
-package Biblioteca;
 
-/**
- *
- * @author aampa
- */
-public class Socios {
+package BibliotecaDiagrama;
 
-    private String DNI;
-    private String nombre;
-    private String contacto;
-    private int fecha_entrega; //socios 30 dias no socios 15 dias
-    private boolean socio;
 
-    public Socios() {
+import java.util.logging.Logger;
 
-        DNI = "";
-        nombre = "";
-        contacto = "";
-        fecha_entrega = 0;
-        socio = false;
+public class Personas {
 
-    }
+    String DNI;
+    String nombre;
+    String contacto;
+    int fecha_entrega; //socios 30 dias no socios 15 dias
+    boolean socio;
 
-    public Socios(String DNI, String nombre, String contacto, int fecha_entrega, boolean socio) {
+    public Personas(String DNI, String nombre, String contacto, int fecha_entrega, boolean socio) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.contacto = contacto;
         this.fecha_entrega = fecha_entrega;
-        this.socio = socio;
-    }
-    
-    //SETTER
-    
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
-    }
-
-    public void setFecha_entrega(int fecha_entrega) {
-        this.fecha_entrega = fecha_entrega;
-    }
-
-    public void setSocio(boolean socio) {
         this.socio = socio;
     }
 
@@ -73,49 +41,122 @@ public class Socios {
         return socio;
     }
 
-    
-    //GETTER
-    public String datossocio() {
-        return "\nNombre: " + nombre + "\nNumero de telefono: " + contacto;
+    //SETTER
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public void setFecha_entrega(int fecha_entrega) {
+        this.fecha_entrega = fecha_entrega;
+    }
+
+    public void setSocio(boolean socio) {
+        this.socio = socio;
+    }
+
+    class Libros {
+
+        int ISBN;
+        String titulo;
+        String tematica;
+        String autor;
+        boolean prestado;
+
+        public Libros(int ISBN, String titulo, String tematica, String autor, boolean prestado) {
+            this.ISBN = ISBN;
+            this.titulo = titulo;
+            this.tematica = tematica;
+            this.autor = autor;
+            this.prestado = prestado;
+        }
+
+        public int getISBN() {
+            return ISBN;
+        }
+
+        public String getTitulo() {
+            return titulo;
+        }
+
+        public String getTematica() {
+            return tematica;
+        }
+
+        public String getAutor() {
+            return autor;
+        }
+
+        public boolean getPrestado() {
+            return prestado;
+        }
+
+        //Setter
+        public void setISBN(int ISBN) {
+            this.ISBN = ISBN;
+        }
+
+        public void setTitulo(String titulo) {
+            this.titulo = titulo;
+        }
+
+        public void setTematica(String tematica) {
+            this.tematica = tematica;
+        }
+
+        public void setAutor(String autor) {
+            this.autor = autor;
+        }
+
+        public void setPrestado(boolean prestado) {
+            this.prestado = prestado;
+        }
+
+        class Prestamo {
+
+            int fecha_prestamo; //Fecha en la que se preta el libro
+            int fecha_devolucion;//Fecha limite para devolver el libro
+            int libro_prestado; //Referencia al libro prestado
+
+            public Prestamo(int fecha_prestamo, int fecha_devolucion, int libro_prestado) {
+                this.fecha_prestamo = fecha_prestamo;
+                this.fecha_devolucion = fecha_devolucion;
+                this.libro_prestado = libro_prestado;
+            }
+
+            public void setFecha_prestamo(int fecha_prestamo) {
+                this.fecha_prestamo = fecha_prestamo;
+            }
+
+            public void setFecha_devolucion(int fecha_devolucion) {
+                this.fecha_devolucion = fecha_devolucion;
+            }
+
+            public void setLibro_prestado(int libro_prestado) {
+                this.libro_prestado = libro_prestado;
+            }
+            private static final Logger LOG = Logger.getLogger(Prestamo.class.getName());
+
+            public int getFecha_prestamo() {
+                return fecha_prestamo;
+            }
+
+            public int getFecha_devolucion() {
+                return fecha_devolucion;
+            }
+
+            public int getLibro_prestado() {
+                return libro_prestado;
+            }
+
+        }
 
     }
-    
-    //SETTER
-    public void damenombre(String nombre_socio) {
-        this.nombre = nombre_socio;
-    }
-    public void damecontacto(String contacto_socio) {
-        this.contacto = contacto_socio;
-    }
-    public void dameDNI(String DNI_socio) {
-        this.DNI = DNI_socio;
-    }
-    public void damesocio(boolean socio_socio) {
-        this.socio = socio_socio;
-    }
-    
-    //SETTER PARA VER SI ES SOCIO
-    
-    public void setSocio (String socio_indicar){
-        
-        if("si".equalsIgnoreCase(socio_indicar)){
-            this.socio=true;
-        }else{
-            this.socio=false;
-        }
-    }
-    
-    //GETTER PARA QUE SALGA MENSAJE PARA SOCIO O NO SOCIO
-    public String getSocio (){
-        if(socio==true){
-            return "Puedes devolver el libro en 30 dias";
-        }else{
-            return "Tienes 15 dias para devolver el libro";
-        }
-    }
-    
-    @Override
-    public String toString() {
-        return "Socios{" + "DNI=" + DNI + ", nombre=" + nombre + ", contacto=" + contacto + ", fecha_entrega=" + fecha_entrega + ", socio=" + socio + '}';
-    }
-    
+}
